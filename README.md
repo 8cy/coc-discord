@@ -1,6 +1,12 @@
 # coc-discord
 an improved discord rich presence for coc.nvim
 
+# Usage
+1. For the time being, this isn't an official [coc.nvim](https://github.com/neoclide/coc.nvim) plugin. So please download it from the [releases](https://github.com/8cy/coc-discord/releases/latest).
+2. Run `$ yarn` or `$ npm i` to install all the dependencies.
+3. Run `$ yarn build` or `$ npm run build` to build the plugin.
+4. Move the `lib/` directory to your coc plugins directory. (On Windows, this is usually `C:\Users\${User}\AppData\Local\coc\extensions\node_modules`).
+
 ## What is this?
 This is just a simple fork of [coc-discord](https://github.com/amiralies/coc-discord) with some added extra features.
 
@@ -20,7 +26,9 @@ This is just a simple fork of [coc-discord](https://github.com/amiralies/coc-dis
     7. Add large image hover text for the large image.
 
 ## TODO
-- [ ] Language independent activity small images. *Sort of like [this](https://marketplace.visualstudio.com/items?itemName=icrawl.discord-vscode)*.
+- [ ] Language independent activity small images. *Sort of like this;*
+
+![](https://strelizia.cc/1wallmCL9Pqo1hr8ol2tKX7fpQuhVEGQ.png)
 - [ ] Easier user customizability.
 
 ### License
