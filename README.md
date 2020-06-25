@@ -11,6 +11,9 @@ an improved discord rich presence for coc.nvim
 ## What is this?
 This is just a simple fork of [coc-discord](https://github.com/amiralies/coc-discord) with some added extra features.
 
+### Example
+![](https://strelizia.cc/vkCTtka4hekOqIxQkGkEnlsaNc4ktYnu.gif)
+
 ## New features
 - **.prettierrc.yml** 🎱 
     1. Change `tabwidth` to 4 instead of 2 spaces.
@@ -33,7 +36,7 @@ This is just a simple fork of [coc-discord](https://github.com/amiralies/coc-dis
 
 ![](https://strelizia.cc/1wallmCL9Pqo1hr8ol2tKX7fpQuhVEGQ.png)
 
-Finished! But the large image is where it is displayed instead of the small image.
+**Finished!** But the large image is where it is displayed instead of the small image.
 - [ ] Easier user customizability.
 
 ### License
