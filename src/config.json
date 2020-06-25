@@ -1,0 +1,9 @@
+{
+    "clientId": "724898679726538824",
+    "RPC": {
+        "detailsPreAppend": "Editing",
+        "statePreAppend": "Workspace:",
+        "smallImageKey": "neovim",
+        "smallImageText": "Neovim"
+    }
+}
