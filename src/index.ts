@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { workspace } from 'coc.nvim';
 import { Client } from 'discord-rpc';
 import * as O from 'fp-ts/lib/Option';
@@ -7,7 +9,7 @@ const clientId = '724898679726538824';
 
 const setActivity = (client: Client, startTimestamp: number) => {
 	const details = pipe(
-	O.fromNullable(workspace.uri),
+	    O.fromNullable(workspace.uri),
 		O.filter((x) => x.startsWith('file:///')),
 		O.map((x) => x.substr(8)),
 		O.map((x) => x.split('/')),
@@ -26,10 +28,48 @@ const setActivity = (client: Client, startTimestamp: number) => {
         O.toUndefined,
     );
 
-    const largeImageKey = 'neovim';
-    const largeImageText = 'Neovim';
+    const fileExtension = pipe(
+        O.fromNullable(workspace.uri),
+		O.filter((x) => x.startsWith('file:///')),
+		O.map((x) => x.substr(8)),
+		O.map((x) => x.split('.')),
+		O.filter((xs) => xs.length > 0),
+		O.map((xs) => xs.reverse()[0]),
+		O.map((x) => x.trim()),
+		O.toUndefined,
+    );
 
-  	client.setActivity({ state, details, startTimestamp, instance: false, largeImageKey, largeImageText });
+    const largeImageText = pipe(
+        O.fromNullable(fileExtension.toUpperCase()),
+        O.map((x) => `Editing a ${x} file`),
+        O.toUndefined,
+    );
+
+    let largeImageKey: string;
+    // let edgeCaseFileExts = ['h', 'hpp', 'cc', 'jsx', 'tsx', 'vimrc'];
+    let validFileExts = ['c', 'cpp', 'cs', 'css', 'go', 'gradle', 'hbs', 'html', 'java', 'js', 'less', 'php', 'py', 'rb', 'sass', 'sql', 'swift', 'ts', 'vim', 'vue', ''];
+
+    if (validFileExts.includes(fileExtension.toLowerCase())) {
+        largeImageKey = fileExtension.toLowerCase();
+    } else {
+        switch (fileExtension.toLowerCase()) {
+            case 'h': largeImageKey = 'c'; break;
+            case 'hpp': largeImageKey = 'cpp'; break; // might combine hpp and cc with a && op
+            case 'cc': largeImageKey = 'cpp'; break;
+            case 'jsx': largeImageKey = 'js'; break;
+            case 'tsx': largeImageKey = 'ts'; break;
+            case 'vimrc': largeImageKey = 'vim'; break;
+            case 'npmignore': largeImageKey = 'npm'; break;
+            case 'scss': largeImageKey = 'sass'; break;
+            case 'gitignore': largeImageKey = 'github'; break;
+            default: largeImageKey = 'file'; break;
+        };
+    };
+
+    const smallImageKey = 'neovim';
+    const smallImageText = 'Neovim';
+
+  	client.setActivity({ state, details, startTimestamp, instance: false, largeImageKey, largeImageText, smallImageKey, smallImageText });
 };
 
 const activate = () => {
