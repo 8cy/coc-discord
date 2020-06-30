@@ -3,6 +3,7 @@
     "RPC": {
         "detailsPreAppend": "Editing",
         "statePreAppend": "Workspace:",
+        "noWorkspaceSufAppend": "No workspace.",
         "smallImageKey": "neovim",
         "smallImageText": "Neovim"
     }

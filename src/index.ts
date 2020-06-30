@@ -16,16 +16,20 @@ const setActivity = (client: Client, startTimestamp: number) => {
 		O.map((x) => x.split('/')),
 		O.filter((xs) => xs.length > 0),
 		O.map((xs) => xs.reverse()[0]),
-		O.map((x) => `${config.RPC.detailsPreAppend} ${x}`), // O.map((x) => `Editing ${x}`),
+        // O.map((x) => `Editing ${x}`),
+		O.map((x) => `${config.RPC.detailsPreAppend} ${x}`),
 		O.toUndefined,
 	);
 
 	const state = pipe(
-		O.fromNullable(workspace.workspaceFolder.name),
+        // If you are not in a workspace, then then the RPC will your "noWorkspaceSufAppend".
+		O.fromNullable(workspace ? workspace.workspaceFolder.name : config.RPC.noWorkspaceSufAppend),
+		// O.fromNullable(workspace.workspaceFolder.name),
         O.map((x) => x.split('/')),
         O.filter((xs) => xs.length > 0),
         O.map((xs) => xs.reverse()[0]),
-        O.map((x) => `${config.RPC.statePreAppend} ${x}`), // O.map((x) => `Workspace: ${x}`),
+        // O.map((x) => `Workspace: ${x}`),
+        O.map((x) => `${config.RPC.statePreAppend} ${x}`),
         O.toUndefined,
     );
 
@@ -42,7 +46,6 @@ const setActivity = (client: Client, startTimestamp: number) => {
 
     // TODO: add custom config.json customizability for largeImageText.
     // don't really know how i would go about doing this, possibly could make a config entry for the pre-append and the suf-append
-    // but that wouldn't look too nice visually
     const largeImageText = pipe(
         O.fromNullable(fileExtension.toUpperCase()),
         O.map((x) => `Editing a ${x} file`),
@@ -50,6 +53,7 @@ const setActivity = (client: Client, startTimestamp: number) => {
     );
 
     let largeImageKey: string;
+
     // let edgeCaseFileExts = ['h', 'hpp', 'cc', 'jsx', 'tsx', 'vimrc'];
     let validFileExts = ['c', 'cpp', 'cs', 'css', 'go', 'gradle', 'hbs', 'html', 'java', 'js', 'less', 'php', 'py', 'rb', 'sass', 'sql', 'swift', 'ts', 'vim', 'vue', ''];
 

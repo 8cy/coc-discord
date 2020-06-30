@@ -1,6 +1,6 @@
 {
   "name": "coc-discord",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "an improved discord rich presence for coc.nvim",
   "main": "lib/index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "tsc -p tsconfig.json",
     "watch": "tsc -w -p tsconfig.json",
     "lint": "eslint src/*",
-    "prepack": "yarn clean && yarn build"
+    "copy:config": "copyfiles -f src/config.json lib/",
+    "prepack": "yarn clean && yarn build && yarn copy:config"
   },
   "keywords": [
     "coc.nvim",
@@ -27,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "coc.nvim": "^0.0.76",
+    "copyfiles": "^2.3.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^7.2.0",
     "eslint-plugin-import": "^2.20.1",
