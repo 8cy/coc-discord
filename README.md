@@ -37,7 +37,7 @@ This is just a simple fork of [coc-discord](https://github.com/amiralies/coc-dis
 ![](https://strelizia.cc/1wallmCL9Pqo1hr8ol2tKX7fpQuhVEGQ.png)
 
 **Finished!** But the large image is where it is displayed instead of the small image.
-- [ ] Easier user customizability.
+- [x] Easier user customizability.
 
 ### License
 MIT
