@@ -2,7 +2,7 @@
 an improved discord rich presence for coc.nvim
 
 # Usage
-1. For the time being, this isn't an official [coc.nvim](https://github.com/neoclide/coc.nvim) plugin. So please download it from the [releases](https://github.com/8cy/coc-discord/releases/latest).
+1. For the time being, this isn't an official [coc.nvim](https://github.com/neoclide/coc.nvim) plugin. So please download it from the [releases](https://github.com/fuwn/coc-discord/releases/latest).
 2. Move the entire downloaded folder (should be called `coc-discord` once extracted) into your coc plugins directory. (On Windows, this is usually `C:\Users\${User}\AppData\Local\coc\extensions\node_modules`).
 3. Run `$ yarn` or `$ npm i` to install all the dependencies.
 4. Run `$ yarn build` or `$ npm run build` to build the plugin.
